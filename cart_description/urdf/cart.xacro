@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<robot name="cart" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find cart_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find cart_description)/urdf/cart.trans" />
+<xacro:include filename="$(find cart_description)/urdf/cart.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.11272781043106934 0.0588118084332541 0.0654304609107374" rpy="0 0 0"/>
+    <mass value="1.4293825523394872"/>
+    <inertia ixx="0.001546" iyy="0.005883" izz="0.006346" ixy="5.3e-05" iyz="1.7e-05" ixz="0.000274"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel__1_1">
+  <inertial>
+    <origin xyz="-1.4137563035532263e-07 -0.0025002715098941873 -2.007497833592109e-07" rpy="0 0 0"/>
+    <mass value="0.30826877913349837"/>
+    <inertia ixx="0.000193" iyy="0.000385" izz="0.000193" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.022418 -0.004497 -0.053122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/wheel__1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.022418 -0.004497 -0.053122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/wheel__1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_2_1">
+  <inertial>
+    <origin xyz="-1.4137562678179227e-07 0.0024997284901030342 -2.007497835812555e-07" rpy="0 0 0"/>
+    <mass value="0.30826877913349837"/>
+    <inertia ixx="0.000193" iyy="0.000385" izz="0.000193" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.022418 -0.114497 -0.053122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.022418 -0.114497 -0.053122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="revert_1_1">
+  <inertial>
+    <origin xyz="9.42674546755562e-08 -2.0447639249160376e-07 0.003999799250215735" rpy="0 0 0"/>
+    <mass value="0.01972920186454389"/>
+    <inertia ixx="1e-06" iyy="1e-06" izz="1e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.166583 -0.053558 -0.088122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/revert_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.166583 -0.053558 -0.088122" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://cart_description/meshes/revert_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin xyz="0.022418 0.004497 0.053122" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel__1_1"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin xyz="0.022418 0.114497 0.053122" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_2_1"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin xyz="0.166583 0.053558 0.088122" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="revert_1_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+</robot>
