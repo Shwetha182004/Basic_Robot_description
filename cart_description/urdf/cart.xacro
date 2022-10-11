@@ -92,21 +92,21 @@
   <origin xyz="0.022418 0.004497 0.053122" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel__1_1"/>
-  <axis xyz="0.0 -1.0 -0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 <joint name="Rev2" type="continuous">
   <origin xyz="0.022418 0.114497 0.053122" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="wheel_2_1"/>
-  <axis xyz="-0.0 1.0 0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
 <joint name="Rev3" type="continuous">
   <origin xyz="0.166583 0.053558 0.088122" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="revert_1_1"/>
-  <axis xyz="0.0 -0.0 1.0"/>
+  <axis xyz="0.0 0.0 1.0"/>
 </joint>
 
 </robot>
